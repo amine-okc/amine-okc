@@ -26,11 +26,11 @@
 ## 📊 Statistiques & Activité
 
 <p align="center">
-  <img height="180em" src="profile/stats.svg" />
-  <img height="180em" src="profile/streak.svg" />
+  <img width="48%" src="profile/stats.svg" />
+  <img width="48%" src="profile/streak.svg" /> 
 </p>
 <p align="center">
-  <img height="180em" src="profile/top-langs.svg" />
+  <img width="97%" src="profile/top-langs.svg" />
 </p>
 
 ---
