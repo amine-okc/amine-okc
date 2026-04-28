@@ -8,14 +8,16 @@ jobs:
     permissions: {contents: write}
     steps:
       - uses: actions/checkout@v6
-      - name: Generate cards
+      - name: Generate all cards
         run: |
           mkdir -p profile
-          # Stats Card - Design épuré sans bordure
-          curl "https://github-readme-stats.vercel.app/api?username=${{ github.repository_owner }}&show_icons=true&theme=tokyonight&count_private=true&include_all_commits=true&hide_border=true" -o profile/stats.svg
-          # Languages Card - Compacte sans bordure
-          curl "https://github-readme-stats.vercel.app/api/top-langs/?username=${{ github.repository_owner }}&layout=compact&theme=tokyonight&count_private=true&hide=jupyter%20notebook,html,css&hide_border=true" -o profile/top-langs.svg
-          # Streak Card - Sans bordure
+          # Stats Card : On utilise ton token pour débloquer le compteur privé
+          curl -H "Authorization: token ${{ secrets.MY_PERSONAL_TOKEN }}" "https://github-readme-stats.vercel.app/api?username=${{ github.repository_owner }}&show_icons=true&theme=tokyonight&count_private=true&include_all_commits=true&hide_border=true" -o profile/stats.svg
+          
+          # Languages Card : Pour voir enfin le TypeScript et React de tes dépôts privés
+          curl -H "Authorization: token ${{ secrets.MY_PERSONAL_TOKEN }}" "https://github-readme-stats.vercel.app/api/top-langs/?username=${{ github.repository_owner }}&layout=compact&theme=tokyonight&count_private=true&hide=jupyter%20notebook,html,css&hide_border=true" -o profile/top-langs.svg
+          
+          # Streak Card : Ton record d'activité réel
           curl "https://github-readme-streak-stats.herokuapp.com/?user=${{ github.repository_owner }}&theme=tokyonight&hide_border=true" -o profile/streak.svg
       - name: Commit cards
         run: |
