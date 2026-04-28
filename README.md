@@ -25,7 +25,13 @@
 
 ## 📊 Statistiques & Activité
 
-![Stats](./profile/stats.svg)
+<p align="center">
+  <img height="180em" src="profile/stats.svg" />
+  <img height="180em" src="profile/streak.svg" />
+</p>
+<p align="center">
+  <img height="180em" src="profile/top-langs.svg" />
+</p>
 
 ---
 
