@@ -24,8 +24,8 @@
 ---
 
 ## 📊 Statistiques & Activité
-![Stats de Amine](https://github-readme-stats.vercel.app/api?username=amine-okc&show_icons=true&theme=tokyonight&count_private=true)
-![Top Langages](https://github-readme-stats.vercel.app/api/top-langs/?username=amine-okc&layout=compact&theme=tokyonight)
+![Stats de Amine](https://github-readme-stats.vercel.app/api?username=amine-okc&show_icons=true&theme=tokyonight&count_private=true&include_all_commits=true))
+![Top Langages](https://github-readme-stats.vercel.app/api/top-langs/?username=amine-okc&layout=compact&theme=tokyonight&count_private=true))
 
 ---
 
