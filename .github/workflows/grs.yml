@@ -1,25 +1,40 @@
 name: Update README cards
+
 on:
-  schedule: [{cron: "0 0 * * *"}]
+  schedule:
+    - cron: "0 0 * * *"
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions: {contents: write}
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v6
-      - name: Generate all cards
+
+      - name: Generate stats card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: stats
+          # On utilise TON secret ici
+          token: ${{ secrets.MY_PERSONAL_TOKEN }}
+          options: username=${{ github.repository_owner }}&show_icons=true&theme=tokyonight&count_private=true&include_all_commits=true&hide_border=true&hide=stars,issues,prs
+
+      - name: Generate top languages card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: top-langs
+          token: ${{ secrets.MY_PERSONAL_TOKEN }}
+          options: username=${{ github.repository_owner }}&layout=compact&theme=tokyonight&count_private=true&hide=jupyter%20notebook,html,css&hide_border=true
+
+      - name: Generate streak card
         run: |
           mkdir -p profile
-          # Stats Card : On utilise ton token pour débloquer le compteur privé
-          curl -H "Authorization: token ${{ secrets.MY_PERSONAL_TOKEN }}" "https://github-readme-stats.vercel.app/api?username=${{ github.repository_owner }}&show_icons=true&theme=tokyonight&count_private=true&include_all_commits=true&hide_border=true" -o profile/stats.svg
-          
-          # Languages Card : Pour voir enfin le TypeScript et React de tes dépôts privés
-          curl -H "Authorization: token ${{ secrets.MY_PERSONAL_TOKEN }}" "https://github-readme-stats.vercel.app/api/top-langs/?username=${{ github.repository_owner }}&layout=compact&theme=tokyonight&count_private=true&hide=jupyter%20notebook,html,css&hide_border=true" -o profile/top-langs.svg
-          
-          # Streak Card : Ton record d'activité réel
           curl "https://github-readme-streak-stats.herokuapp.com/?user=${{ github.repository_owner }}&theme=tokyonight&hide_border=true" -o profile/streak.svg
-      - name: Commit cards
+
+      - name: Commit and Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
