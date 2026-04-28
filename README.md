@@ -25,14 +25,7 @@
 
 ## 📊 Statistiques & Activité
 
-<p align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=amine-okc&show_icons=true&theme=tokyonight&count_private=true&include_all_commits=true&v=1" />
-  <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=amine-okc&theme=tokyonight&hide_border=true" />
-</p>
-
-<p align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=amine-okc&layout=compact&theme=tokyonight&count_private=true&hide=jupyter%20notebook,html,css&v=2" />
-</p>
+![Stats](./profile/stats.svg)
 
 ---
 
