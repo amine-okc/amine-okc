@@ -2,13 +2,12 @@ name: Update README cards
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Runs once daily at midnight
+    - cron: "0 0 * * *" # Exécution chaque minuit
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
 
@@ -19,25 +18,24 @@ jobs:
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true
+          # Ajout de theme, count_private et include_all_commits
+          options: username=${{ github.repository_owner }}&show_icons=true&theme=tokyonight&count_private=true&include_all_commits=true
           path: profile/stats.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.METRICS_TOKEN }} # Utilise ton token perso pour voir le privé
 
       - name: Generate top languages card
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: top-langs
-          options: username=${{ github.repository_owner }}&layout=compact&langs_count=6
+          # Ajout de theme, count_private et masquage des langages inutiles
+          options: username=${{ github.repository_owner }}&layout=compact&theme=tokyonight&count_private=true&hide=jupyter%20notebook,html,css
           path: profile/top-langs.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.METRICS_TOKEN }}
 
-      - name: Generate pin card
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=readme-tools&repo=github-readme-stats
-          path: profile/pin-readme-tools-github-readme-stats.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+      # Section ajoutée pour le Streak Stats
+      - name: Generate streak card
+        run: |
+          curl "https://github-readme-streak-stats.herokuapp.com/?user=${{ github.repository_owner }}&theme=tokyonight&hide_border=true" -o profile/streak.svg
 
       - name: Commit cards
         run: |
