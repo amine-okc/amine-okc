@@ -9,7 +9,7 @@
 - 🛠️ **Ce que je fais :** Je pilote des projets de bout en bout, de la réponse aux appels d'offres jusqu'au déploiement sécurisé sur AWS.
 - 💡 **Ma spécialité :** Créer des architectures "from scratch" robustes et migrer des écosystèmes complexes vers des stacks unifiées.
 - 🎓 **Formation :** Diplômé d'un Master 2 Logiciels Sûrs (UPEC) et ingénieur de formation.
-- 📍 **Localisation :** Créteil / Paris, France.
+- 📍 **Localisation :** Île-de-France, France.
 
 ---
 
